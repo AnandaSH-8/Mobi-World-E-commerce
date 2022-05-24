@@ -1,6 +1,6 @@
 # Mobi-World
 
-# A Simple responsive E-Commerce Web Application of SmartPhones under ₹10000 and ₹20000, built with React and Material UI
+## A Simple responsive E-Commerce Web Application of SmartPhones under ₹10000 and ₹20000, built with React and Material UI
 
 <br>
 
