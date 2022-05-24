@@ -46,4 +46,14 @@ router.delete("/:id",async(req,res)=>{
     }
 })
 
+router.delete("",async(req,res)=>{
+    try{
+        const carts = await Cart.deleteMany();
+       return res.send({message:"Items Deleted"});
+    }
+    catch(err){
+        return res.send({message:"Could not delete"});
+    }
+})
+
 module.exports = router;
