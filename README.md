@@ -1,6 +1,6 @@
 # Mobi-World
 
-<kbd style="font-size:20px; font-weight:900;">A Simple responsive E-Commerce Web Application of SmartPhones under ₹10000 and ₹20000, built with React and Material UI.</kbd>
+# A Simple responsive E-Commerce Web Application of SmartPhones under ₹10000 and ₹20000, built with React and Material UI
 
 <br>
 
