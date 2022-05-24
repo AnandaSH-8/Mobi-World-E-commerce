@@ -26,7 +26,10 @@ export const Confirm = () =>{
     },[])
 
     useEffect(()=>{
-        dispatch(cartItems([]))
+        axios.delete("https://mobi-world-8.herokuapp.com/cart")
+        .then(()=>{
+            dispatch(cartItems([]))
+        })
     },[])
 
     return <div>
