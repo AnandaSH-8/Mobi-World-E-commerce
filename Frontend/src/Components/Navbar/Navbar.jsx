@@ -29,7 +29,7 @@ const StyledShoppingCart = styled(ShoppingCart)(({ theme }) => (
 export const SiteNavbar = () =>{
 
 
-  let {username} = JSON.parse(localStorage.getItem("user"))
+  let {username} = JSON.parse(localStorage.getItem("user")) || "username"
   
   if(username == undefined)
   {

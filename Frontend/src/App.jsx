@@ -45,8 +45,16 @@ function App() {
               <SmartPhones/>
             </PrivateRoutes>
             }/>
-          <Route path="/mobiles/under_10000" element={<UnderTen/>}/>
-          <Route path="/mobiles/under_20000" element={<UnderTwenty/>}/>
+          <Route path="/mobiles/under_10000" element={
+            <PrivateRoutes>
+              <UnderTen/>
+            </PrivateRoutes>
+            }/>
+          <Route path="/mobiles/under_20000" element={
+            <PrivateRoutes>
+              <UnderTwenty/>
+            </PrivateRoutes>
+            }/>
           <Route path="/mobile/:name" element={<Single/>}/>
           <Route path="/mobiles/cart" element={
             <PrivateRoutes>
