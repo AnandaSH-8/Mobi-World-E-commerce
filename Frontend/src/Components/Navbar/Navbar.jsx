@@ -71,9 +71,13 @@ export const SiteNavbar = () =>{
     {
       return <div></div>
     }
-    carts?.map((item)=>{
-      counts = counts+item.count
-    })
+    
+    if(isAuth)
+    {
+      carts?.map((item)=>{
+        counts = counts+item.count
+      })
+    }
 
     return <div className={Style.navbar}>
         <div className={Style.logo_title}>

@@ -47,6 +47,9 @@ export const Home = () =>{
                </Link>
             </div>
         </div>
+        <div className={Style.Message}>
+            <kbd>" A Place for Best smart phones under Rs 20000 and  Rs 10000 "</kbd>
+        </div>
 
     </div>
 }

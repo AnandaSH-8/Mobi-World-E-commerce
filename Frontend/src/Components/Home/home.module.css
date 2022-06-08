@@ -49,6 +49,20 @@ img{
     border:3px solid rgb(180, 184, 235);
 }
 
+.Message{
+    min-width: 50%;
+    background-color: rgb(213, 234, 250);
+    max-width: 90%;
+    margin:auto;
+    margin-bottom:-1%;
+    height:100px;
+    margin-top: 3%;
+    font-size:xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 @media only screen and (min-width:375px) and (max-width:768px){
     
     .top_image{
@@ -69,6 +83,10 @@ img{
     .cat_images img{
         margin:0 5%;
         width:95%;
+    }
+
+    .Message{
+        font-size: x-large;
     }
 }
 

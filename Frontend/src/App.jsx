@@ -5,7 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { SignUp } from './Components/SignUpIn/signup'
 import { SignIn } from './Components/SignUpIn/signin'
 import { Home } from './Components/Home/Home'
-import { Footer } from './Components/Footer'
+import { Footer } from './Components/Footer/Footer'
 import {UnderTen} from "./Components/Category/under_ten"
 import {UnderTwenty} from "./Components/Category/under_twenty"
 import { Single } from './Components/Mobile_Details/mobile_details'
@@ -29,9 +29,9 @@ function App() {
       <SiteNavbar/>
       <Routes>
           <Route path="/" element={
-            <ateRoutes>
-              <Home/>
-            </ateRoutes>
+            <PrivateRoutes>
+            <Home/>
+          </PrivateRoutes>
           }/>
           <Route path="/home" element={
             <PrivateRoutes>
