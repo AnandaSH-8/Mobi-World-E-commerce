@@ -12,15 +12,21 @@ export const Single = () =>{
     const {name} = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const phone = useSelector((store)=>store.mobiles.item_info[0])
-    const {loading,error} = useSelector((store)=> store.mobiles)
-    const [image,setImage] = useState(phone?.images[0])
+    const {loading,item_info,error} = useSelector((store)=>store.mobiles)
+    
     useEffect(()=>{
         dispatch(GetMobile(name))
     },[])
 
+    const phone = item_info[0]
+    const [image,setImage] = useState()
+
     useEffect(()=>{
         setImage(phone?.images[0])
+
+        return ()=>{
+            console.log("Cleaned")
+        }
     },[]) 
 
     if(loading)
@@ -31,7 +37,7 @@ export const Single = () =>{
     return <div className={Style.Details}>
         <div className={Style.Images}>
             <div className={Style.mainImage}>
-                <img className={Style.image} src={image} alt=""/> 
+                <img className={Style.image} src={image} alt={phone?.images[0]}/> 
             </div>
             <div  className={Style.smallImageBox}>
                 {phone?.images.map((img)=>{

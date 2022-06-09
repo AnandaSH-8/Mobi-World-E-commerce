@@ -23,7 +23,7 @@ export const MobileReducer = (state = initState,{type,payload})=>{
         case MOBILES_TWENTY_DETAILS:
             return {...state,loading:false,details:payload,error:false}
         case MOBILE:
-            return {...state,item_info:payload}
+            return {...state,loading:false,item_info:payload,error:false}
         case ERRORS:
             return {...state,loading:false,error:true}
         default:

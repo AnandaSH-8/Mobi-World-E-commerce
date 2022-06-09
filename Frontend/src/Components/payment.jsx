@@ -12,7 +12,8 @@ export const Payment = () =>{
 
     let total = {
         amount:JSON.parse(localStorage.getItem("total"))
-    }   
+    }  
+    const {phone} = JSON.parse(localStorage.getItem("formData")) 
     
     let amount = total.amount*100
     useEffect(()=>{
@@ -50,7 +51,7 @@ export const Payment = () =>{
         "prefill": {
             "name": "Mobiworld",
             "email": "mobileworld@mobilWorld.com",
-            "contact": "888888888"
+            "contact": phone || "888888888"
         },
         "notes": {
             "address": "Razorpay Corporate Office"
