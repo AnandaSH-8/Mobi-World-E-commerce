@@ -13,7 +13,7 @@ export const LOGOUT = "LOGOUT";
 export const logOut = ()=>({type:LOGOUT})
 
 export const Signup = (details)  => (dispatch) =>{
-
+    alert("Please Wait...")
     axios.post(`https://mobi-world-8.herokuapp.com/signup`,details)
     .then(({data})=>{
         alert(data.message)
@@ -25,10 +25,10 @@ export const Signup = (details)  => (dispatch) =>{
 }
 
 export const Signin = (details) => (dispatch)=>{
-    console.log(details,"Details")
+    
+    alert("Please Wait...")
     axios.post(`https://mobi-world-8.herokuapp.com/signin`,details)
     .then(({data})=>{
-        alert("Please Wait...")
         dispatch(authentication(data.token))
     })
 }

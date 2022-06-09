@@ -6,13 +6,14 @@ import Style from "./mobile.module.css"
 import { Button } from "@mui/material"
 import {AddToCart} from "../../Redux/Cart/action"
 import { v4 as uuid } from 'uuid';
-
+import {Loading} from "../loading"
 
 export const Single = () =>{
     const {name} = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const phone = useSelector((store)=>store.mobiles.item_info[0])
+    const {loading,error} = useSelector((store)=> store.mobiles)
     const [image,setImage] = useState(phone?.images[0])
     useEffect(()=>{
         dispatch(GetMobile(name))
@@ -21,6 +22,11 @@ export const Single = () =>{
     useEffect(()=>{
         setImage(phone?.images[0])
     },[]) 
+
+    if(loading)
+    {
+        return <Loading></Loading>
+    }
 
     return <div className={Style.Details}>
         <div className={Style.Images}>

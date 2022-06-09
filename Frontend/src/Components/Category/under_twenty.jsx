@@ -8,11 +8,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {Link} from "react-router-dom"
-
+import {Loading} from "../loading"
 
 export const UnderTwenty = ()=>{
 
-    const {details} = useSelector((store)=> store.mobiles)
+    const {loading,details,error} = useSelector((store)=> store.mobiles)
     const dispatch = useDispatch()
 
     const [sort,setSort] = useState("asc")
@@ -25,6 +25,11 @@ export const UnderTwenty = ()=>{
     useEffect(()=>{
         dispatch(Get_Under_Twenty())
     },[])
+
+    if(loading)
+    {
+        return <Loading></Loading>
+    }
 
     return <>
          <div className={Style.topBar}>

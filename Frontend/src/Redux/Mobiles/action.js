@@ -35,8 +35,11 @@ export const Get_All = () => (dispatch) => {
 
 export const GetAllSortFilter = (sort,brand) => (dispatch) =>{
     
+    dispatch(loading())
+
     brand = brand || ""
     sort = sort == "asc"?1:-1;
+    
     axios.get(`https://mobi-world-8.herokuapp.com/phone/matchsort?phone=${brand}&price=${sort}`)
     .then(({data})=>{
         dispatch(smartPhones(data))
@@ -75,6 +78,7 @@ export const  Get_Under_Twenty = () => (dispatch) => {
 
 export const GetTenSortFilter = (sort,brand) => (dispatch) =>{
     
+    dispatch(loading())
     brand = brand || ""
     sort = sort == "asc"?1:-1;
     axios.get(`https://mobi-world-8.herokuapp.com/phone/tenmatchsort?phone=${brand}&price=${sort}`)
@@ -85,6 +89,7 @@ export const GetTenSortFilter = (sort,brand) => (dispatch) =>{
 
 export const GetTwentySortFilter = (sort,brand) => (dispatch) =>{
     
+    dispatch(loading())
     brand = brand || ""
     sort = sort == "asc"?1:-1;
     axios.get(`https://mobi-world-8.herokuapp.com/phone/twentymatchsort?phone=${brand}&price=${sort}`)
@@ -95,6 +100,7 @@ export const GetTwentySortFilter = (sort,brand) => (dispatch) =>{
 
 export const GetMobile = (name) => (dispatch) =>{
 
+    dispatch(loading())
     axios.get(`https://mobi-world-8.herokuapp.com/phone/details/${name}`)
     .then(({data})=>{
         dispatch(single_mobile(data))
