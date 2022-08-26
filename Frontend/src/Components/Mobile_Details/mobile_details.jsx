@@ -17,7 +17,7 @@ export const Single = () =>{
         dispatch(GetMobile(name))
     },[])
 
-    let {loading,item_info,error} = useSelector((store)=>store.mobiles)
+    const {loading,item_info,error} = useSelector((store)=>store.mobiles)
 
     const phone = item_info[0]
     const [image,setImage] = useState()
@@ -26,7 +26,6 @@ export const Single = () =>{
         setImage(phone?.images[0])
     },[phone])
 
-    loading = true;
     if(loading)
     {
         return <Loading></Loading>
