@@ -31,6 +31,9 @@ export const Signin = (details) => (dispatch)=>{
     .then(({data})=>{
         dispatch(authentication(data.token))
     })
+    .catch((error)=>{
+        alert("Incorrect UserName or Password")
+    })
 }
 
 const authentication = (token) => (dispatch) =>{
@@ -46,5 +49,8 @@ const authentication = (token) => (dispatch) =>{
             dispatch(userDetails(data.user))
         }
         
+    })
+    .catch((error)=>{
+        alert("Something went wrong, Try Again")
     })
 }

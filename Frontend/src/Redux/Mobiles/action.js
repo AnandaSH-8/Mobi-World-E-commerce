@@ -101,7 +101,7 @@ export const GetTwentySortFilter = (sort,brand) => (dispatch) =>{
 export const GetMobile = (name) => (dispatch) =>{
 
     dispatch(loading())
-    
+
     axios.get(`https://mobi-world-8.herokuapp.com/phone/details/${name}`)
     .then(({data})=>{
         dispatch(single_mobile(data))

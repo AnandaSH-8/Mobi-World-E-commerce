@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { GetMobile } from "../../Redux/Mobiles/action"
@@ -12,23 +12,21 @@ export const Single = () =>{
     const {name} = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const {loading,item_info,error} = useSelector((store)=>store.mobiles)
     
-    useEffect(()=>{
+    const dispatchIt = useMemo(()=>{
         dispatch(GetMobile(name))
     },[])
+
+    let {loading,item_info,error} = useSelector((store)=>store.mobiles)
 
     const phone = item_info[0]
     const [image,setImage] = useState()
 
-    useEffect(()=>{
+    const setimg = useMemo(()=>{
         setImage(phone?.images[0])
+    },[phone])
 
-        return ()=>{
-            console.log("Cleaned")
-        }
-    },[]) 
-
+    loading = true;
     if(loading)
     {
         return <Loading></Loading>

@@ -4,12 +4,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 export const Loading = () => {
   return (
-   <div style={{margin:"auto",width:"25%",marginTop:"5%"}}>
+   <div style={{margin:"5% auto 14% auto",width:"25%"}}>
         <Stack sx={{ color: 'orange' }} spacing={15} direction="row">
-            <CircularProgress color="secondary"/>
-            <CircularProgress color="success" />
-            <CircularProgress color="inherit" />
-    </Stack>
+            <CircularProgress size={100} color="secondary"/>
+            <CircularProgress size={100} color="success" />
+            <CircularProgress size={100}  color="inherit" />
+        </Stack>
    </div>
   );
 }
