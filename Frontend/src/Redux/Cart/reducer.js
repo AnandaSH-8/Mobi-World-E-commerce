@@ -1,16 +1,15 @@
 
-import {CARTITEMS} from "./action"
+import { CARTITEMS } from "./action"
 
 const initState = {
-    carts:[]
+    carts: []
 }
 
-export const cartReducer = (state = initState,{type,payload})=>{
+export const cartReducer = (state = initState, { type, payload }) => {
 
-    switch (type)
-    {
+    switch (type) {
         case CARTITEMS:
-            return {...state,carts:payload}
+            return { ...state, carts: payload }
         default:
             return state;
     }
