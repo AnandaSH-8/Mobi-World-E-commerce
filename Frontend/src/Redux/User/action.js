@@ -14,7 +14,7 @@ export const logOut = () => ({ type: LOGOUT })
 
 export const Signup = (details) => (dispatch) => {
     alert("Please Wait...")
-    axios.post(`https://mobi-world-8.herokuapp.com/signup`, details)
+    axios.post(`http://localhost:8888/signup`, details)
         .then(({ data }) => {
             alert(data.message)
             if (data.message == "User Registered") {
@@ -26,7 +26,7 @@ export const Signup = (details) => (dispatch) => {
 export const Signin = (details) => (dispatch) => {
 
     alert("Please Wait...")
-    axios.post(`https://mobi-world-8.herokuapp.com/signin`, details)
+    axios.post(`http://localhost:8888/signin`, details)
         .then(({ data }) => {
             dispatch(authentication(data.token))
         })
@@ -37,7 +37,7 @@ export const Signin = (details) => (dispatch) => {
 
 const authentication = (token) => (dispatch) => {
     let link = { headers: { authorization: `Bearer ${token}` } }
-    axios.get(`https://mobi-world-8.herokuapp.com/auth`, link)
+    axios.get(`http://localhost:8888/auth`, link)
         .then(({ data }) => {
             let { user, message } = data
 

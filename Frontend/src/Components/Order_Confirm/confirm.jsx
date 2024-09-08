@@ -26,7 +26,7 @@ export const Confirm = () => {
 
   useEffect(() => {
     axios
-      .post("https://mobi-world-8.herokuapp.com/razor/payment/details", {
+      .post("http://localhost:8888/razor/payment/details", {
         payment_id: payment,
       })
       .then((res) => {
@@ -35,7 +35,7 @@ export const Confirm = () => {
   }, []);
 
   useEffect(() => {
-    axios.delete("https://mobi-world-8.herokuapp.com/cart").then(() => {
+    axios.delete("http://localhost:8888/cart").then(() => {
       dispatch(cartItems([]));
     });
   }, []);

@@ -38,7 +38,7 @@ export class Footer extends Component {
               </a>
             </div>
           </div>
-          <div className={Style.copy}>MobiWorld 2022. All rights Reserved</div>
+          <div className={Style.copy}>MobiWorld 2024. All rights Reserved</div>
         </div>
       </div>
     );

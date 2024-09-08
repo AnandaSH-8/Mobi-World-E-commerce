@@ -17,14 +17,14 @@ export const Payment = () => {
 
     let amount = total.amount * 100
     useEffect(() => {
-        axios.post("https://mobi-world-8.herokuapp.com/razor/orderId", amount)
+        axios.post("http://localhost:8888/razor/orderId", amount)
             .then(({ data }) => {
                 setOrder(data.orderId)
             })
     }, [])
 
     const options = {
-        "key": "rzp_test_FEuVDwpJ8tTUZi",
+        "key": process.env.razorKey,
         "amount": amount,
         "currency": "INR",
         "name": "Mobi World",
@@ -33,7 +33,7 @@ export const Payment = () => {
         "order_id": order,
         "handler": function (response) {
 
-            axios.post("https://mobi-world-8.herokuapp.com/razor/verify", { response })
+            axios.post("http://localhost:8888/razor/verify", { response })
                 .then(({ data }) => {
                     console.log("data", data)
                     if (data.signatureIsValid) {

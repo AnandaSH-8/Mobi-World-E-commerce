@@ -14,7 +14,7 @@ export const AddToCart = (items) => (dispatch) => {
         count: 1
     }
 
-    axios.post("https://mobi-world-8.herokuapp.com/cart", item)
+    axios.post("http://localhost:8888/cart", item)
         .then(({ data }) => {
             alert(data.message)
         })
@@ -25,7 +25,7 @@ export const AddToCart = (items) => (dispatch) => {
 
 export const GetCart = () => (dispatch) => {
 
-    axios.get(`https://mobi-world-8.herokuapp.com/cart`)
+    axios.get(`http://localhost:8888/cart`)
         .then(({ data }) => {
             dispatch(cartItems(data))
         })
@@ -41,7 +41,7 @@ export const UpdateCart = (items, id, price, count) => (dispatch) => {
 
     console.log(items)
 
-    axios.put(`https://mobi-world-8.herokuapp.com/cart/${id}`, items)
+    axios.put(`http://localhost:8888/cart/${id}`, items)
         .then(({ data }) => {
             alert(data.message)
             dispatch(GetCart())
@@ -50,7 +50,7 @@ export const UpdateCart = (items, id, price, count) => (dispatch) => {
 
 export const DeleteCart = (id) => (dispatch) => {
 
-    axios.delete(`https://mobi-world-8.herokuapp.com/cart/${id}`)
+    axios.delete(`http://localhost:8888/cart/${id}`)
         .then(({ data }) => {
             alert(data.message)
             dispatch(GetCart())
