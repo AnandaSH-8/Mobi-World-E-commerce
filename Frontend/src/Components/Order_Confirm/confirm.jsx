@@ -26,7 +26,7 @@ export const Confirm = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:8888/razor/payment/details", {
+      .post("https://mobi-world-api.vercel.app/razor/payment/details", {
         payment_id: payment,
       })
       .then((res) => {
@@ -35,7 +35,7 @@ export const Confirm = () => {
   }, []);
 
   useEffect(() => {
-    axios.delete("http://localhost:8888/cart").then(() => {
+    axios.delete("https://mobi-world-api.vercel.app/cart").then(() => {
       dispatch(cartItems([]));
     });
   }, []);

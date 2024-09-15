@@ -4,11 +4,13 @@ import thunk from 'redux-thunk'
 import { compose, applyMiddleware, combineReducers } from 'redux'
 import { UserReducer } from './User/reducer'
 import { cartReducer } from "./Cart/reducer"
+import { alertReducer } from './Show Alert/reducer'
 
 const rootReducer = combineReducers({
     mobiles: MobileReducer,
     user: UserReducer,
-    items: cartReducer
+    items: cartReducer,
+    alert:alertReducer
 })
 
 const middleware = [thunk];

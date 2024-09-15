@@ -17,6 +17,9 @@ import { Confirm } from "./Components/Order_Confirm/confirm";
 
 function App() {
   let { isAuth } = useSelector((store) => store.user);
+  let {show,type,message} = useSelector((store) => store.alert);
+
+  console.log(show,type,message,'IS AT LINE NUMBER 22 appjsx');
 
   const PrivateRoutes = ({ children }) => {
     return isAuth ? children : <Navigate to="/signin" />;

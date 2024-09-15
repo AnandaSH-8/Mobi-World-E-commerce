@@ -1,4 +1,5 @@
 import axios from "axios";
+import {showAlert} from "../Show Alert/reducer";
 
 export const REGISTERED = "REGISTERED";
 
@@ -13,10 +14,10 @@ export const LOGOUT = "LOGOUT";
 export const logOut = () => ({ type: LOGOUT })
 
 export const Signup = (details) => (dispatch) => {
-    alert("Please Wait...")
-    axios.post(`http://localhost:8888/signup`, details)
+    showAlert({show:true, type:'info',  message:'Please Wait...'})
+    axios.post(`https://mobi-world-api.vercel.app/signup`, details)
         .then(({ data }) => {
-            alert(data.message)
+            showAlert({show:true, type:'success',  message:data.message})
             if (data.message == "User Registered") {
                 dispatch(Registered())
             }
@@ -25,30 +26,30 @@ export const Signup = (details) => (dispatch) => {
 
 export const Signin = (details) => (dispatch) => {
 
-    alert("Please Wait...")
-    axios.post(`http://localhost:8888/signin`, details)
+    showAlert({show:true, type:'info',  message:'Please Wait...'})
+    axios.post(`https://mobi-world-api.vercel.app/signin`, details)
         .then(({ data }) => {
             dispatch(authentication(data.token))
         })
         .catch((error) => {
-            alert("Incorrect UserName or Password")
+            showAlert({show:true, type:'error',  message:'Incorrect UserName or Password'})
         })
 }
 
 const authentication = (token) => (dispatch) => {
     let link = { headers: { authorization: `Bearer ${token}` } }
-    axios.get(`http://localhost:8888/auth`, link)
+    axios.get(`https://mobi-world-api.vercel.app/auth`, link)
         .then(({ data }) => {
             let { user, message } = data
 
             localStorage.setItem("user", JSON.stringify(user))
-            alert(message)
-            if (data.message == "Signin Successfull") {
+            showAlert({show:true, type:'success',  message})
+            if (message == "Signin Successfull") {
                 dispatch(userDetails(data.user))
             }
 
         })
         .catch((error) => {
-            alert("Something went wrong, Try Again")
+            showAlert({show:true, type:'info',  message:'Something went wrong, Try Again'})
         })
 }

@@ -14,7 +14,7 @@ export const AddToCart = (items) => (dispatch) => {
         count: 1
     }
 
-    axios.post("http://localhost:8888/cart", item)
+    axios.post("https://mobi-world-api.vercel.app/cart", item)
         .then(({ data }) => {
             alert(data.message)
         })
@@ -25,7 +25,7 @@ export const AddToCart = (items) => (dispatch) => {
 
 export const GetCart = () => (dispatch) => {
 
-    axios.get(`http://localhost:8888/cart`)
+    axios.get(`https://mobi-world-api.vercel.app/cart`)
         .then(({ data }) => {
             dispatch(cartItems(data))
         })
@@ -41,7 +41,7 @@ export const UpdateCart = (items, id, price, count) => (dispatch) => {
 
     console.log(items)
 
-    axios.put(`http://localhost:8888/cart/${id}`, items)
+    axios.put(`https://mobi-world-api.vercel.app/cart/${id}`, items)
         .then(({ data }) => {
             alert(data.message)
             dispatch(GetCart())
@@ -50,7 +50,7 @@ export const UpdateCart = (items, id, price, count) => (dispatch) => {
 
 export const DeleteCart = (id) => (dispatch) => {
 
-    axios.delete(`http://localhost:8888/cart/${id}`)
+    axios.delete(`https://mobi-world-api.vercel.app/cart/${id}`)
         .then(({ data }) => {
             alert(data.message)
             dispatch(GetCart())

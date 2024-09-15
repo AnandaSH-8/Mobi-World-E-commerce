@@ -23,7 +23,7 @@ export const Get_All = () => (dispatch) => {
 
     dispatch(loading())
 
-    axios.get(`http://localhost:8888/phone`)
+    axios.get(`https://mobi-world-api.vercel.app/phone`)
         .then(({ data }) => {
             dispatch(smartPhones(data))
         })
@@ -39,7 +39,7 @@ export const GetAllSortFilter = (sort, brand) => (dispatch) => {
     brand = brand || ""
     sort = sort == "asc" ? 1 : -1;
 
-    axios.get(`http://localhost:8888/phone/matchsort?phone=${brand}&price=${sort}`)
+    axios.get(`https://mobi-world-api.vercel.app/phone/matchsort?phone=${brand}&price=${sort}`)
         .then(({ data }) => {
             dispatch(smartPhones(data))
         })
@@ -50,7 +50,7 @@ export const Get_Under_Ten = () => (dispatch) => {
 
     dispatch(loading())
 
-    axios.get("http://localhost:8888/phone/ten")
+    axios.get("https://mobi-world-api.vercel.app/phone/ten")
         .then(({ data }) => {
             dispatch(mobileTenDetails(data))
         })
@@ -63,7 +63,7 @@ export const Get_Under_Twenty = () => (dispatch) => {
 
     dispatch(loading())
 
-    axios.get("http://localhost:8888/phone/twenty")
+    axios.get("https://mobi-world-api.vercel.app/phone/twenty")
         .then(({ data }) => {
             dispatch(mobileTwentyDetails(data))
         })
@@ -78,7 +78,7 @@ export const GetTenSortFilter = (sort, brand) => (dispatch) => {
     dispatch(loading())
     brand = brand || ""
     sort = sort == "asc" ? 1 : -1;
-    axios.get(`http://localhost:8888/phone/tenmatchsort?phone=${brand}&price=${sort}`)
+    axios.get(`https://mobi-world-api.vercel.app/phone/tenmatchsort?phone=${brand}&price=${sort}`)
         .then(({ data }) => {
             dispatch(mobileTenDetails(data))
         })
@@ -89,7 +89,7 @@ export const GetTwentySortFilter = (sort, brand) => (dispatch) => {
     dispatch(loading())
     brand = brand || ""
     sort = sort == "asc" ? 1 : -1;
-    axios.get(`http://localhost:8888/phone/twentymatchsort?phone=${brand}&price=${sort}`)
+    axios.get(`https://mobi-world-api.vercel.app/phone/twentymatchsort?phone=${brand}&price=${sort}`)
         .then(({ data }) => {
             dispatch(mobileTwentyDetails(data));
         })
@@ -99,7 +99,7 @@ export const GetMobile = (name) => (dispatch) => {
 
     dispatch(loading());
 
-    axios.get(`http://localhost:8888/phone/details/${name}`)
+    axios.get(`https://mobi-world-api.vercel.app/phone/details/${name}`)
         .then(({ data }) => {
             dispatch(single_mobile(data))
         })

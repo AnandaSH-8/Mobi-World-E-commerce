@@ -17,7 +17,7 @@ export const Payment = () => {
 
     let amount = total.amount * 100
     useEffect(() => {
-        axios.post("http://localhost:8888/razor/orderId", amount)
+        axios.post("https://mobi-world-api.vercel.app/razor/orderId", amount)
             .then(({ data }) => {
                 setOrder(data.orderId)
             })
@@ -33,7 +33,7 @@ export const Payment = () => {
         "order_id": order,
         "handler": function (response) {
 
-            axios.post("http://localhost:8888/razor/verify", { response })
+            axios.post("https://mobi-world-api.vercel.app/razor/verify", { response })
                 .then(({ data }) => {
                     console.log("data", data)
                     if (data.signatureIsValid) {
