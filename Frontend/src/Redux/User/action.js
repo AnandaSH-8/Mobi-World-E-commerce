@@ -14,10 +14,10 @@ export const LOGOUT = "LOGOUT";
 export const logOut = () => ({ type: LOGOUT })
 
 export const Signup = (details) => (dispatch) => {
-    showAlert({show:true, type:'info',  message:'Please Wait...'})
+    dispatch(showAlert({show:true, type:'info',  message:'Please Wait...'}))
     axios.post(`https://mobi-world-api.vercel.app/signup`, details)
         .then(({ data }) => {
-            showAlert({show:true, type:'success',  message:data.message})
+            dispatch(showAlert({show:true, type:'success',  message:data.message}));
             if (data.message == "User Registered") {
                 dispatch(Registered())
             }
@@ -26,13 +26,13 @@ export const Signup = (details) => (dispatch) => {
 
 export const Signin = (details) => (dispatch) => {
 
-    showAlert({show:true, type:'info',  message:'Please Wait...'})
+    dispatch(showAlert({show:true, type:'info',  message:'Please Wait...'}));
     axios.post(`https://mobi-world-api.vercel.app/signin`, details)
         .then(({ data }) => {
             dispatch(authentication(data.token))
         })
         .catch((error) => {
-            showAlert({show:true, type:'error',  message:'Incorrect UserName or Password'})
+            dispatch(showAlert({show:true, type:'error',  message:'Incorrect UserName or Password'}));
         })
 }
 
@@ -43,13 +43,13 @@ const authentication = (token) => (dispatch) => {
             let { user, message } = data
 
             localStorage.setItem("user", JSON.stringify(user))
-            showAlert({show:true, type:'success',  message})
+            dispatch(showAlert({show:true, type:'success',  message}));
             if (message == "Signin Successfull") {
                 dispatch(userDetails(data.user))
             }
 
         })
         .catch((error) => {
-            showAlert({show:true, type:'info',  message:'Something went wrong, Try Again'})
+            dispatch(showAlert({show:true, type:'info',  message:'Something went wrong, Try Again'}));
         })
 }

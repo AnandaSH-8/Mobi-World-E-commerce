@@ -14,12 +14,12 @@ import { SmartPhones } from "./Components/SmartPhones";
 import { Checkout } from "./Components/Checkout/checkout";
 import { Payment } from "./Components/payment";
 import { Confirm } from "./Components/Order_Confirm/confirm";
+import { AlertComponent as Alert } from "./Components/alert";
 
 function App() {
   let { isAuth } = useSelector((store) => store.user);
-  let {show,type,message} = useSelector((store) => store.alert);
+  let alertData = useSelector((store) => store.alert);
 
-  console.log(show,type,message,'IS AT LINE NUMBER 22 appjsx');
 
   const PrivateRoutes = ({ children }) => {
     return isAuth ? children : <Navigate to="/signin" />;
@@ -28,6 +28,7 @@ function App() {
   return (
     <div className="App">
       <SiteNavbar />
+      <Alert alertData={alertData} ></Alert>
       <Routes>
         <Route
           path="/"

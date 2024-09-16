@@ -12,6 +12,7 @@ const initState = {
 export const alertReducer = (state = initState,{type,payload}) => {
   switch(type){
     case SHOW_ALERT:
+    console.log(type, payload,'IS AT LINE NUMBER 13');
       return {...state, show: true, type: payload.type, message: payload.message}
     default:
       return state;
