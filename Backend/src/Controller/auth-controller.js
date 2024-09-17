@@ -23,7 +23,7 @@ const validation = async(req,res,next) =>{
     }
     catch(err)
     {
-        return res.send({message:err.message})
+        return res.status(500).send({message:err.message})
     }
     
     req.user = result.user
@@ -40,7 +40,7 @@ router.get("",validation, async(req,res)=>{
     }
     catch(error)
     {
-        return res.send({message:"SomeThing Went Wrong"})
+       return res.status(500).send({ error: err.message});
     }
 })
 

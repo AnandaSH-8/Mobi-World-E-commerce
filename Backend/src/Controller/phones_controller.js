@@ -9,7 +9,7 @@ router.post("",async(req,res)=>{
     }
     catch(err)
     {
-        return res.send(err)
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -20,7 +20,7 @@ router.get("",async(req,res)=>{
     }
     catch(err)
     {
-        return res.send(err)
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -34,7 +34,7 @@ router.get("/matchsort",async(req,res)=>{
         return res.send(phones);
     }
     catch(err){
-        return res.send(err);
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -45,7 +45,7 @@ router.get("/ten",async(req,res)=>{
     }
     catch(err)
     {
-        return res.send(err)
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -59,7 +59,7 @@ router.get("/tenmatchsort",async(req,res)=>{
         return res.send(phones);
     }
     catch(err){
-        return res.send(err);
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -70,7 +70,7 @@ router.get("/twenty",async(req,res)=>{
     }
     catch(err)
     {
-        return res.send(err)
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -84,19 +84,18 @@ router.get("/twentymatchsort",async(req,res)=>{
         return res.send(phones);
     }
     catch(err){
-        return res.send(err);
+        return res.status(500).send({ error: err.message});
     }
 }) 
 
 router.get("/details/:name",async(req,res)=>{
-    console.log(req.params.name)
     try{
         const phone = await Phone.find({name:req.params.name}).lean().exec()
         return res.status(200).send(phone)
     }
     catch(err)
     {
-        return res.send(err)
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -117,7 +116,7 @@ router.delete("/:id",async(req,res)=>{
        return res.send({message:"Item Delted"});
     }
     catch(err){
-        return res.send({message:"Could not delete"});
+        return res.status(500).send({ error: err.message});
     }
 })
 

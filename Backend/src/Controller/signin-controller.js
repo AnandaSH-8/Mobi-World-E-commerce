@@ -32,7 +32,7 @@ router.post("",async(req,res)=>{
     }
     catch(err)
     {
-        return res.send(err)
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -43,7 +43,7 @@ router.get("",async(req,res)=>{
     }
     catch(err)
     {
-        return res.send(err)
+        return res.status(500).send({ error: err.message});
     }
 })
 

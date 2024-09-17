@@ -9,7 +9,7 @@ router.post("",async(req,res)=>{
     }
     catch(err)
     {
-        return res.send({error:err,message:"Something Went Wrong"})
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -20,7 +20,7 @@ router.get("",async(req,res)=>{
     }
     catch(err)
     {
-        return res.send(err)
+        return res.status(500).send({ error: err.message});
     }
 })
 
@@ -32,27 +32,28 @@ router.put("/:id",async(req,res)=>{
         return res.status(200).send({message:"Unit Updated"})
     }
     catch(err){
-        return res.send({message:"Failed to Update"});
+        return res.status(500).send({ error: err.message,message:"Failed to Update" });
     }
 })
 
 router.delete("/:id",async(req,res)=>{
     try{
         const carts = await Cart.findByIdAndDelete(req.params.id);
-       return res.send({message:"Item Deleted"});
+       return res.status(200).send({message:"Item Deleted"});
     }
     catch(err){
-        return res.send({message:"Could not delete"});
+        return res.status(500).send({ error: err.message,message:"Could not delete" });
+        
     }
 })
 
 router.delete("",async(req,res)=>{
     try{
         const carts = await Cart.deleteMany();
-       return res.send({message:"Items Deleted"});
+       return res.status(200).send({message:"Items Deleted"});
     }
     catch(err){
-        return res.send({message:"Could not delete"});
+        return res.status(500).send({ error: err.message,message:"Could not delete" });
     }
 })
 
