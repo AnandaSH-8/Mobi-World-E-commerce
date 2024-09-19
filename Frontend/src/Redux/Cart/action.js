@@ -1,4 +1,5 @@
 import axios from "axios"
+import {showAlert} from "../Show Alert/reducer";
 export const CARTITEMS = "CARTITEMS";
 
 export const cartItems = (payload) => ({ type: CARTITEMS, payload })
@@ -16,10 +17,10 @@ export const AddToCart = (items) => (dispatch) => {
 
     axios.post("https://mobi-world-api.vercel.app/cart", item)
         .then(({ data }) => {
-            alert(data.message)
+            dispatch(showAlert({show:true, type:'success',  message:data.message}));
         })
         .catch((err) => {
-            alert("Unable to add, Please Try Again")
+            dispatch(showAlert({show:true, type:'info',  message:'Unable to add, please try again'}))
         })
 }
 
@@ -39,11 +40,9 @@ export const UpdateCart = (items, id, price, count) => (dispatch) => {
         count
     }
 
-    console.log(items)
-
     axios.put(`https://mobi-world-api.vercel.app/cart/${id}`, items)
         .then(({ data }) => {
-            alert(data.message)
+            dispatch(showAlert({show:true, type:'success',  message:data.message}));
             dispatch(GetCart())
         })
 }
@@ -52,10 +51,10 @@ export const DeleteCart = (id) => (dispatch) => {
 
     axios.delete(`https://mobi-world-api.vercel.app/cart/${id}`)
         .then(({ data }) => {
-            alert(data.message)
+            dispatch(showAlert({show:true, type:'success',  message:data.message}));
             dispatch(GetCart())
         })
         .catch((err) => {
-            alert("Not able to delete now, Try again")
+            dispatch(showAlert({show:true, type:'success',  message:'Not able to delete now, Try again'}));
         })
 }

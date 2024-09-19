@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useRazorpay from "react-razorpay";
 import { useNavigate } from "react-router-dom"
+import { showAlert } from "../Redux/Show Alert/reducer";
 
 export const Payment = () => {
 
@@ -35,13 +36,12 @@ export const Payment = () => {
 
             axios.post("https://mobi-world-api.vercel.app/razor/verify", { response })
                 .then(({ data }) => {
-                    console.log("data", data)
                     if (data.signatureIsValid) {
                         localStorage.setItem("id", JSON.stringify(response.razorpay_payment_id))
                         navigate("/mobile/confirm")
                     }
                     else {
-                        alert("Payment Failed!. Please try again")
+                        dispatch(showAlert({show:true, type:'success',  message:"Payment Failed!. Please try again" }));
                         navigate("/mobile/checkout")
                     }
                 })
@@ -58,12 +58,11 @@ export const Payment = () => {
             "color": "orange"
         }
     };
-    console.log(options, "Options")
     let rzp1 = new Razorpay(options);
     rzp1.on('payment.failed', function (response) {
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.reason);
+        console.log(response.error.description);
+        console.log(response.error.source);
+        console.log(response.error.reason);
     });
 
     rzp1.open();

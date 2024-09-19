@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 
 export const AlertComponent  = ({alertData}) => {
   let {show,type,message} = alertData;
-  console.log(show,type,message,'IS AT LINE No. 8 IN alert.jsx');
 
   const [open,setOpen] = useState(false);
 
@@ -15,12 +14,21 @@ export const AlertComponent  = ({alertData}) => {
     else setOpen(false);
     
   }, [show])
+
+  useEffect(() => {
+    if(open){
+      setTimeout(() => {
+        setOpen(false);
+      }, 4000);
+    };
+  }, [open])
     
   return (
   <Box sx={{ width: '100%' }}>
       <Collapse in={open}>
         <Alert
           severity={type}
+          variant="filled"
           action={
             <IconButton
               aria-label="close"
@@ -33,7 +41,7 @@ export const AlertComponent  = ({alertData}) => {
               <CloseIcon fontSize="inherit" />
             </IconButton>
           }
-          sx={{position:'absolute',width:400,top:80,left:'35%',zIndex:100,height:60 }}
+          sx={{position:'absolute',width:400,top:80,left:'35%',zIndex:100,height:60,borderRadius:2,fontSize:19,alignItems:'center' }}
         >
           {message}
         </Alert>
